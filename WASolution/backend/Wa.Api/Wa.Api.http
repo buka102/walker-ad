@@ -1,0 +1,6 @@
+@Wa.Api_HostAddress = http://localhost:5139
+
+GET {{Wa.Api_HostAddress}}/api/v1
+Accept: application/json
+
+###

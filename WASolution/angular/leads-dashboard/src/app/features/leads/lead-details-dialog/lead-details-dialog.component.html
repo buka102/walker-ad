@@ -1,0 +1,11 @@
+<h2 mat-dialog-title>Lead Details</h2>
+<mat-dialog-content>
+  <p><strong>Name:</strong> {{ lead.name }}</p>
+  <p><strong>Phone:</strong> {{ lead.phoneNumber }}</p>
+  <p><strong>Zip Code:</strong> {{ lead.zipCode }}</p>
+  <p><strong>Consent:</strong> {{ lead.consentToContact ? 'Yes' : 'No' }}</p>
+  <p><strong>Email:</strong> {{ lead.email || 'N/A' }}</p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="close()">Close</button>
+</mat-dialog-actions>
