@@ -22,7 +22,7 @@ docker-compose up --build
 This will build and start the backend and frontend containers.
 
 - **API** will be available at [http://localhost:8080/](http://localhost:8080/)
-- **Angular App** will be available at [http://localhost:4200/](http://localhost:4200/)
+- **Angular App** will be available at [http://localhost:4200/](http://localhost:4200/leads)
 
 To stop the services, use:
 ```sh
@@ -65,12 +65,6 @@ ng serve --proxy-config proxy.conf.json
 ```
 The app will be available at [http://localhost:4200/leads](http://localhost:4200/leads)
 
-### 4. Build for Production
-```sh
-ng build --configuration=production
-```
-The output will be in `dist/leads-dashboard/`
-
 
 ## Running Tests
 
@@ -106,23 +100,6 @@ If valid, the data is processed, stored, and any necessary notifications are tri
 
 The response status indicates success or failure.
 
-curl for success (includes api key 123456)
-```
-curl -X POST https://your-api-url.com/api/webhook \
-     -H "Content-Type: application/json" \
-     -H "x-api-key: 123456" \
-     -d '{
-           "eventType": "LeadCreated",
-           "data": {
-             "name": "John Doe",
-             "email": "johndoe@example.com",
-             "phoneNumber": "1234567890",
-             "zipCode": "90210",
-             "consentToContact": true
-           }
-         }'
-```
-
 #### Expected Responses:
 200 OK: The request was successful, and data was processed.
 
@@ -130,36 +107,7 @@ curl -X POST https://your-api-url.com/api/webhook \
 
 401 Unauthorized: Invalid or missing API key. Ensure you are using x-api-key: 123456.
 
-curl for unauthorized
-```
-curl -X POST https://your-api-url.com/api/webhook \
-     -H "Content-Type: application/json" \
-     -d '{
-           "eventType": "LeadCreated",
-           "data": {
-             "name": "John Doe",
-             "email": "johndoe@example.com",
-             "phoneNumber": "1234567890",
-             "zipCode": "90210",
-             "consentToContact": true
-           }
-         }'
-```
-
-curl for bad request
-```
-curl -X POST https://your-api-url.com/api/webhook \
-     -H "Content-Type: application/json" \
-     -H "x-api-key: 123456" \
-     -d '{
-           "eventType": "LeadCreated",
-           "data": {
-             "name": "John Doe",
-             "email": "j.com",
-             "consentToContact": true
-           }
-         }'
-```
+## Use provides Postman Collection to test for all responses.
 
 ## Enterprise-Level Features Used
 This project includes several best practices commonly used in enterprise applications:
